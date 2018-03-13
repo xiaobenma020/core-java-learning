@@ -10,76 +10,114 @@ import java.lang.reflect.*;
  */
 public class VipCustomerTest {
 
+    /**
+     * 测试 Class#forName
+     */
     @Test
     public void forName() throws ClassNotFoundException {
         Class.forName("cn.xiaobenma.demo.core.reflection.VipCustomer");
     }
 
+    /**
+     * 测试Class#getFild
+     */
     @Test
     public void getFields() {
         printFields(getVipCustomerClass().getFields());
     }
 
-    private Class<VipCustomer> getVipCustomerClass() {
-        return VipCustomer.class;
-    }
-
+    /**
+     * 测试Class#getField
+     */
     @Test
     public void getField() throws NoSuchFieldException {
         printFields(getVipCustomerClass().getField("VIP_ADVANCED"));
     }
 
 
+    /**
+     * 测试Class#getDeclaredFields
+     */
     @Test
     public void getDeclaredFields() {
         printFields(getVipCustomerClass().getDeclaredFields());
     }
 
+    /**
+     * 测试Class#getDeclaredField
+     */
     @Test
     public void getDeclaredField() throws NoSuchFieldException {
         printFields(getVipCustomerClass().getDeclaredField("rank"));
     }
 
+    /**
+     * 测试Class#getMethods
+     */
     @Test
     public void getMethods() {
         printMethods(getVipCustomerClass().getMethods());
     }
 
+    /**
+     * 测试Class#getMethod
+     */
     @Test
     public void getMethod() throws NoSuchMethodException {
         printMethods(getVipCustomerClass().getMethod("setName", String.class));
     }
 
+    /**
+     * 测试Class#getDeclaredMethods
+     */
     @Test
     public void getDeclaredMethods() {
         printMethods(getVipCustomerClass().getDeclaredMethods());
     }
 
+    /**
+     * 测试Class#getDeclaredMethod
+     */
     @Test
     public void getDeclaredMethod() throws NoSuchMethodException {
         printMethods(getVipCustomerClass().getDeclaredMethod("setName", String.class));
     }
 
+    /**
+     * 测试Class#getConstructors
+     */
     @Test
     public void getConstructors() {
         printConstructors(getVipCustomerClass().getConstructors());
     }
 
+    /**
+     * 测试Class#getConstructor
+     */
     @Test
     public void getConstructor() throws NoSuchMethodException {
         printConstructors(getVipCustomerClass().getConstructor(String.class, String.class, String.class, int.class));
     }
 
+    /**
+     * 测试Class#getDeclaredConstructors
+     */
     @Test
     public void getDeclaredConstructors() {
         printConstructors(getVipCustomerClass().getDeclaredConstructors());
     }
 
+    /**
+     * 测试Class#getDeclaredConstructor
+     */
     @Test
     public void getDeclaredConstructor() throws NoSuchMethodException {
         printConstructors(getVipCustomerClass().getDeclaredConstructor());
     }
 
+    /**
+     * 测试通过Constructor创建实例
+     */
     @Test
     public void newInstance() throws NoSuchMethodException, IllegalAccessException
             , InvocationTargetException, InstantiationException {
@@ -91,9 +129,11 @@ public class VipCustomerTest {
         Assert.assertEquals(VipCustomer.VIP_ADVANCED, customer.getRank());
     }
 
+    /**
+     * 测试方法调用
+     */
     @Test
     public void invoke() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, NoSuchFieldException {
-
 
         VipCustomer customer = new VipCustomer("001", "小ben马", "10086", VipCustomer.VIP_ADVANCED);
         Assert.assertEquals(VipCustomer.VIP_ADVANCED, customer.getRank());
@@ -111,6 +151,9 @@ public class VipCustomerTest {
 
     }
 
+    /**
+     * 测试动态修改可访问性
+     */
     @Test
     public void setAccessible() throws NoSuchFieldException, IllegalAccessException, NoSuchMethodException
             , InvocationTargetException, InstantiationException {
@@ -203,6 +246,10 @@ public class VipCustomerTest {
             sb.append(");");
             System.out.println(sb.toString());
         }
+    }
+
+    private Class<VipCustomer> getVipCustomerClass() {
+        return VipCustomer.class;
     }
 
 
